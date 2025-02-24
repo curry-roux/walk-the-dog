@@ -32,15 +32,20 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-      - name: Upload build artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+      # - name: Upload build artifacts
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./dist
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           clean: true
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       - run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
 
       # - uses: peaceiris/actions-gh-pages@v4
