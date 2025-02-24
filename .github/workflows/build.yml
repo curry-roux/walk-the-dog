@@ -40,6 +40,7 @@ jobs:
         with:
           folder: dist
           clean: true
+      - uses: actions/deploy-pages@v3
 
   # deploy:
   #   needs: build
