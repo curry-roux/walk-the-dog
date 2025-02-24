@@ -8,7 +8,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment:
-      # name: github-pages
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
@@ -35,7 +35,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      # - run: ls -l dist
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
