@@ -9,25 +9,23 @@ module.exports = {
   entry: {
     index: "./js/index.js"
   },
-  experiments: {
-    asyncWebAssembly: true,
-  },
   output: {
     path: dist,
     filename: "[name].js"
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    static: { directory: dist }
+  },
+  experiments: {
+       asyncWebAssembly: true,
   },
   plugins: [
-    new CopyPlugin([
-      path.resolve(__dirname, "static")
-    ]),
-
+    new CopyPlugin({patterns:[ path.resolve(__dirname, "static") ]}),
     new WasmPackPlugin({
       crateDirectory: __dirname,
     }),
-  ]
+  ],
+  performance: {
+    maxAssetSize: 5000000,
+  }
 };
