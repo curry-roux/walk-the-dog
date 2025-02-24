@@ -41,7 +41,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          artifact_name: dist
+          name: dist
+          path: dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
