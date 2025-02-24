@@ -35,12 +35,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      # - name: Upload dist artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: dist
-      #     path: dist
-      - run: ls -l dist
+      # - run: ls -l dist
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
