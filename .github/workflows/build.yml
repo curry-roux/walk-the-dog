@@ -49,12 +49,17 @@ jobs:
         with:
           name: dist
           path: dist
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v2
-      # GitHub Pagesへのデプロイ
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        id: deployment
+        uses: actions/deploy-pages@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          branch: gh-pages
+          folder: dist
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
+      # GitHub Pagesへのデプロイ
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist
