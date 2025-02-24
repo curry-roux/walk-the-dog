@@ -7,9 +7,9 @@ name: Build and Deploy
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
       contents: write
@@ -39,6 +39,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
+          clean: true
 
   # deploy:
   #   needs: build
