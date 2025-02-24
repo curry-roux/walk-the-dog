@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: dtolnay/toolchain@v1
+    - uses: actions-rs/toolchain@stable
       with:
         toolchain: 1.64.0
         target: wasm32-unknown-unknown
@@ -23,3 +23,10 @@ jobs:
       uses: actions-rs/clippy-check@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+      
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16.13.0'
+    - run: npm install
+    - run: npm test
+    - run: npm run build
