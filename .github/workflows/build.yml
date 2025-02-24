@@ -7,9 +7,6 @@ name: Build and Deploy
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
       id-token: write
@@ -37,11 +34,3 @@ jobs:
         with:
           folder: dist
           clean: true
-      - name: upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-      - run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
