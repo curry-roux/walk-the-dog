@@ -56,9 +56,13 @@ jobs:
       # - uses: actions/upload-pages-artifact@v3
       #   with:
       #     path: './dist'
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
       # GitHub Pagesへのデプロイ
       # - name: Deploy to GitHub Pages
       #   uses: peaceiris/actions-gh-pages@v3
