@@ -7,11 +7,12 @@ name: Build and Deploy
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
+      id-token: write
       contents: write
     steps:
       - uses: actions/checkout@v4.1.7
