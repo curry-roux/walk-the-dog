@@ -41,10 +41,12 @@ jobs:
         with:
           folder: dist
           clean: true
-      - uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+      - run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
+
+      # - uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: .
 
   # deploy:
   #   needs: build
