@@ -39,7 +39,9 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/download-pages-artifact@v2
+      - uses: actions/download-pages-artifact@v1
+        with:
+          artifact_name: dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
